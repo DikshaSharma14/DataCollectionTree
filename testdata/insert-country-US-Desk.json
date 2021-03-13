@@ -1,0 +1,26 @@
+{
+	"dim": [
+		{
+			"key": "device",
+			"val": "desk"
+		},
+		{
+			"key": "country",
+			"val": "US"
+		}
+	],
+	"metrics": [
+		{
+			"key": "webreq",
+			"val": 8
+		},
+		{
+			"key": "timespent",
+			"val": 10
+		},
+        {
+			"key": "daysspent",
+			"val": 11
+		}
+	]
+}

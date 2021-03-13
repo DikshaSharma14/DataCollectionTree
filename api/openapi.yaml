@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: diksha.may14@outlook.com
+  description: Data Collection Tree API
+  title: Data Collection Tree API
+  version: 1.0.0
+paths:
+  /v1/insert:
+    put:
+      operationId: insert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsertRequest'
+        description: request data
+        required: true
+      responses:
+        "200":
+          description: inserted record successfully
+        "400":
+          description: bad request
+        "500":
+          description: internal server error
+      summary: insert a new metric
+      tags:
+      - insert
+  /v1/query:
+    post:
+      operationId: query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+        description: request data
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+          description: item found
+        "400":
+          description: bad request
+      summary: queries the mertic
+      tags:
+      - query
+components:
+  schemas:
+    QueryRequest:
+      example:
+        dim:
+        - val: val
+          key: key
+        - val: val
+          key: key
+      properties:
+        dim:
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+    QueryResponse:
+      example:
+        dim:
+        - val: val
+          key: key
+        - val: val
+          key: key
+        metrics:
+        - null
+        - null
+      properties:
+        dim:
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+        metrics:
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+    InsertRequest:
+      example:
+        dim:
+        - val: val
+          key: key
+        - val: val
+          key: key
+        metrics:
+        - val: val
+          key: key
+        - val: val
+          key: key
+      properties:
+        dim:
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+        metrics:
+          items:
+            $ref: '#/components/schemas/KeyValue'
+          type: array
+    KeyValue:
+      example:
+        val: val
+        key: key
+      properties:
+        key:
+          type: string
+        val:
+          type: string
+      type: object

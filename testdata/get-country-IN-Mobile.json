@@ -1,0 +1,12 @@
+{
+	"dim": [
+		{
+			"key": "device",
+			"val": "mobile"
+		},
+		{
+			"key": "country",
+			"val": "IN"
+		}
+	]
+}
